@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 
 import { getTrainerUsers, updateUserRoutine } from "../services/api";
-
+import "../styles/TrainerUsers.css";
 
 function TrainerUsers() {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
   const [routineEdits, setRoutineEdits] = useState({});
 
-
-  // TEMP: trainerId (later we’ll get this dynamically)
-  const trainerId = 7;
+  const trainerId = localStorage.getItem("trainerId");
 
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    if (trainerId) {
+      fetchUsers();
+    }
+  }, [trainerId]);
 
   const fetchUsers = async () => {
     try {
@@ -24,66 +24,71 @@ function TrainerUsers() {
       setError("Failed to load assigned users");
     }
   };
-  const saveRoutine = async (userId) => {
-  try {
-    await updateUserRoutine(
-      trainerId,
-      userId,
-      routineEdits[userId]
-    );
-    alert("Gym routine updated successfully");
-  } catch (err) {
-    alert("Failed to update gym routine");
-  }
-};
 
+  const saveRoutine = async (userId) => {
+    try {
+      await updateUserRoutine(trainerId, userId, routineEdits[userId] ?? "");
+      alert("Gym routine updated successfully");
+    } catch (err) {
+      alert("Failed to update gym routine");
+    }
+  };
 
   return (
-    <div>
-      <h1>My Members</h1>
+    <div className="page trainer-users">
+      <h1 className="page-title">My members</h1>
+      <p className="page-subtitle">
+        Update routines and keep every member progressing week to week.
+      </p>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {!trainerId && (
+        <div className="card warning">
+          <h3>No trainer ID saved</h3>
+          <p>Please log in with your trainer ID to load your roster.</p>
+        </div>
+      )}
 
-      <table className="trainer-table">
-       <thead>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Username</th>
-    <th>Gym Routine</th>
-    <th>Action</th>
-  </tr>
-</thead>
-<tbody>
-  {users.map((u) => (
-    <tr key={u.id}>
-      <td>{u.id}</td>
-      <td>{u.name}</td>
-      <td>{u.username}</td>
+      {error && <p className="error">{error}</p>}
 
-      <td>
-        <textarea
-          rows="4"
-          cols="30"
-          value={routineEdits[u.id] ?? u.gymRoutine ?? ""}
-          onChange={(e) =>
-            setRoutineEdits({
-              ...routineEdits,
-              [u.id]: e.target.value,
-            })
-          }
-        />
-      </td>
+      <table className="table trainer-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Gym Routine</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((u) => (
+            <tr key={u.id}>
+              <td>{u.id}</td>
+              <td>{u.name}</td>
+              <td>{u.username}</td>
 
-      <td>
-        <button onClick={() => saveRoutine(u.id)}>
-          Save Routine
-        </button>
-      </td>
-    </tr>
-  ))}
-</tbody>
+              <td>
+                <textarea
+                  className="routine-input"
+                  rows="4"
+                  value={routineEdits[u.id] ?? u.gymRoutine ?? ""}
+                  onChange={(e) =>
+                    setRoutineEdits({
+                      ...routineEdits,
+                      [u.id]: e.target.value,
+                    })
+                  }
+                />
+              </td>
 
+              <td>
+                <button className="button ghost" onClick={() => saveRoutine(u.id)}>
+                  Save Routine
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

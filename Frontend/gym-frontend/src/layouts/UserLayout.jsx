@@ -1,26 +1,26 @@
-import { Link, Outlet, useNavigate } from 'react-router-dom';
-import '../styles/AdminLayout.css';
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import "../styles/AdminLayout.css";
 
-function AdminLayout() {
+function UserLayout() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.clear();
-    navigate('/login');
+    navigate("/login");
   };
 
   return (
     <div className="admin-layout">
       <aside className="admin-sidebar">
         <div className="sidebar-header">
-          <span className="pill">Admin</span>
-          <h2>ForgeFit HQ</h2>
+          <span className="pill">Member</span>
+          <h2>Your Plan</h2>
         </div>
+
         <nav>
-          <Link to="/admin">Dashboard</Link>
-          <Link to="/admin/trainers">Trainers</Link>
-          <Link to="/admin/users">Members</Link>
+          <Link to="/user">Dashboard</Link>
         </nav>
+
         <button className="logout" onClick={handleLogout}>Logout</button>
       </aside>
 
@@ -31,4 +31,4 @@ function AdminLayout() {
   );
 }
 
-export default AdminLayout;
+export default UserLayout;

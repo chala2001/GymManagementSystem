@@ -1,0 +1,21 @@
+.about-page h2 {
+  font-family: "Fraunces", serif;
+  margin: 12px 0 6px;
+}
+
+.about-highlight {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: center;
+}
+
+.about-highlight ul {
+  margin-top: 10px;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.about-highlight li {
+  margin-bottom: 6px;
+}

@@ -65,4 +65,16 @@ public class AdminService {
     public void deleteUser(Long userId) {
         userRepository.deleteById(userId);
     }
+
+    public User assignUserToTrainer(Long userId, Long trainerId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        Trainer trainer = trainerRepository.findById(trainerId)
+                .orElseThrow(() -> new RuntimeException("Trainer not found"));
+
+        user.setTrainer(trainer);
+        user.setLastModifiedDate(java.time.LocalDateTime.now());
+
+        return userRepository.save(user);
+    }
 }

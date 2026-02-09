@@ -66,60 +66,67 @@ function AdminTrainers() {
   };
 
   return (
-    <div>
-      <h1>Trainer Management</h1>
+    <div className="page admin-trainers">
+      <h1 className="page-title">Trainer management</h1>
+      <p className="page-subtitle">
+        Add new coaches, manage experience levels, and keep staffing aligned.
+      </p>
 
-      {/* CREATE TRAINER FORM */}
-      <form className="trainer-form" onSubmit={handleCreate}>
-        <h3>Add Trainer</h3>
+      <form className="card trainer-form" onSubmit={handleCreate}>
+        <h3>Add trainer</h3>
+        <div className="form-grid">
+          <input
+            className="input"
+            name="username"
+            placeholder="Username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          name="username"
-          placeholder="Username"
-          value={formData.username}
-          onChange={handleChange}
-          required
-        />
+          <input
+            className="input"
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
+          <input
+            className="input"
+            name="name"
+            placeholder="Full Name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          name="name"
-          placeholder="Full Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
+          <input
+            className="input"
+            name="experienceYears"
+            type="number"
+            placeholder="Experience (Years)"
+            value={formData.experienceYears}
+            onChange={handleChange}
+            required
+          />
 
-        <input
-          name="experienceYears"
-          type="number"
-          placeholder="Experience (Years)"
-          value={formData.experienceYears}
-          onChange={handleChange}
-          required
-        />
+          <input
+            className="input"
+            name="dateOfBirth"
+            type="date"
+            value={formData.dateOfBirth}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-        <input
-          name="dateOfBirth"
-          type="date"
-          value={formData.dateOfBirth}
-          onChange={handleChange}
-          required
-        />
-
-        <button type="submit">Add Trainer</button>
+        <button className="button" type="submit">Add trainer</button>
       </form>
 
-      {/* TRAINER TABLE */}
-      <table className="trainer-table">
+      <table className="table trainer-table">
         <thead>
           <tr>
             <th>ID</th>
@@ -139,7 +146,7 @@ function AdminTrainers() {
               <td>{trainer.experienceYears}</td>
               <td>
                 <button
-                  className="delete-btn"
+                  className="button ghost"
                   onClick={() => handleDelete(trainer.id)}
                 >
                   Delete

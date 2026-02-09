@@ -1,0 +1,45 @@
+.user-dashboard .snapshot {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.user-dashboard .snapshot div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.95rem;
+}
+
+.user-dashboard .snapshot span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.user-dashboard .routine {
+  margin-top: 18px;
+  padding: 14px;
+  background: var(--accent-soft);
+  border-radius: 14px;
+}
+
+.user-dashboard .routine span {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.user-dashboard .warning {
+  margin-top: 18px;
+}
+
+.user-dashboard .result {
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.user-dashboard .error {
+  color: #b72e2e;
+  margin-top: 12px;
+}

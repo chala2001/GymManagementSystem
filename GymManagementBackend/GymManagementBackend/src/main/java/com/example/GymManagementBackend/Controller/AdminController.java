@@ -54,4 +54,12 @@ public class AdminController {
     public void deleteUser(@PathVariable Long id) {
         adminService.deleteUser(id);
     }
+
+    // Assign user to trainer
+    @PutMapping("/users/{userId}/assign/{trainerId}")
+    public User assignUserToTrainer(
+            @PathVariable Long userId,
+            @PathVariable Long trainerId) {
+        return adminService.assignUserToTrainer(userId, trainerId);
+    }
 }

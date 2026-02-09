@@ -1,0 +1,17 @@
+.register-page {
+  display: grid;
+  gap: 20px;
+}
+
+.register-form {
+  max-width: 520px;
+}
+
+.register-form .error {
+  color: #b72e2e;
+}
+
+.register-form .result {
+  color: var(--accent);
+  font-weight: 600;
+}
