@@ -24,6 +24,9 @@ public class Trainer {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false, unique = true)
+    private String email;
+
     @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
 
@@ -46,11 +49,12 @@ public class Trainer {
     public Trainer() {
     }
 
-    public Trainer(String username, String password, String name,
+    public Trainer(String username, String password, String name, String email,
                    LocalDate dateOfBirth, int experienceYears) {
         this.username = username;
         this.password = password;
         this.name = name;
+        this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.experienceYears = experienceYears;
     }
@@ -87,6 +91,14 @@ public class Trainer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public LocalDate getDateOfBirth() {

@@ -8,6 +8,7 @@ function AdminTrainers() {
     username: '',
     password: '',
     name: '',
+    email: '',
     experienceYears: '',
     dateOfBirth: '',
   });
@@ -55,6 +56,7 @@ function AdminTrainers() {
         username: '',
         password: '',
         name: '',
+        email: '',
         experienceYears: '',
         dateOfBirth: '',
       });
@@ -105,6 +107,16 @@ function AdminTrainers() {
 
           <input
             className="input"
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            className="input"
             name="experienceYears"
             type="number"
             placeholder="Experience (Years)"
@@ -132,6 +144,7 @@ function AdminTrainers() {
             <th>ID</th>
             <th>Username</th>
             <th>Name</th>
+            <th>Email</th>
             <th>Experience</th>
             <th>Actions</th>
           </tr>
@@ -143,6 +156,7 @@ function AdminTrainers() {
               <td>{trainer.id}</td>
               <td>{trainer.username}</td>
               <td>{trainer.name}</td>
+              <td>{trainer.email}</td>
               <td>{trainer.experienceYears}</td>
               <td>
                 <button

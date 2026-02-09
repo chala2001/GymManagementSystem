@@ -72,6 +72,7 @@ function AdminUsers() {
             <th>ID</th>
             <th>Name</th>
             <th>Username</th>
+            <th>Email</th>
             <th>Trainer</th>
             <th>Assign Trainer</th>
             <th>Actions</th>
@@ -83,6 +84,7 @@ function AdminUsers() {
               <td>{user.id}</td>
               <td>{user.name}</td>
               <td>{user.username}</td>
+              <td>{user.email}</td>
               <td>{user.trainer ? user.trainer.name : 'Unassigned'}</td>
               <td className="assign-cell">
                 <select
