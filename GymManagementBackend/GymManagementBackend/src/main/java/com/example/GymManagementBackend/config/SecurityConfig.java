@@ -39,7 +39,6 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-                // ✅ ENABLE CORS IN SECURITY
                 .cors(cors -> {})
 
                 // Disable CSRF for REST
@@ -47,6 +46,7 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/users/register").permitAll()
+                        .requestMatchers("/api/admin/create-admin").permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/trainer/**").hasRole("TRAINER")
                         .requestMatchers("/api/users/**").authenticated()

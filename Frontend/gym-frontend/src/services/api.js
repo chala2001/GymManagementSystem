@@ -13,18 +13,18 @@ export const checkAdmin = (username, password) => {
   });
 };
 
-export const checkTrainer = (username, password) => {
+export const checkTrainer = (username, password, trainerId) => {
   const token = btoa(`${username}:${password}`);
-  return API.get('/api/trainer/1/users', {
+  return API.get(`/api/trainer/${trainerId}/users`, {
     headers: {
       Authorization: `Basic ${token}`,
     },
   });
 };
 
-export const checkUser = (username, password) => {
+export const checkUser = (username, password, userId) => {
   const token = btoa(`${username}:${password}`);
-  return API.get('/api/users/1', {
+  return API.get(`/api/users/${userId}`, {
     headers: {
       Authorization: `Basic ${token}`,
     },
@@ -53,6 +53,18 @@ export const getAllUsers = () => {
   });
 };
 
+export const assignUserToTrainer = (userId, trainerId) => {
+  return API.put(`/api/admin/users/${userId}/assign/${trainerId}`, null, {
+    headers: getAuthHeader(),
+  });
+};
+
+export const deleteUser = (userId) => {
+  return API.delete(`/api/admin/users/${userId}`, {
+    headers: getAuthHeader(),
+  });
+};
+
 // Delete trainer by admin
 export const deleteTrainer = (trainerId) => {
   return API.delete(`/api/admin/trainers/${trainerId}`, {
@@ -75,8 +87,29 @@ export const getTrainerUsers = (trainerId) => {
 export const updateUserRoutine = (trainerId, userId, routine) => {
   return API.put(
     `/api/trainer/${trainerId}/users/${userId}/routine`,
-    { gymRoutine: routine },
-    { headers: getAuthHeader() }
+    routine,
+    {
+      headers: {
+        ...getAuthHeader(),
+        'Content-Type': 'text/plain',
+      },
+    }
   );
+};
+
+export const registerUser = (userData) => {
+  return API.post('/api/users/register', userData);
+};
+
+export const getUser = (userId) => {
+  return API.get(`/api/users/${userId}`, {
+    headers: getAuthHeader(),
+  });
+};
+
+export const updateUser = (userId, userData) => {
+  return API.put(`/api/users/${userId}`, userData, {
+    headers: getAuthHeader(),
+  });
 };
 

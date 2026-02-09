@@ -1,42 +1,51 @@
 .login-container {
-  height: 90vh;
-  display: flex;
-  justify-content: center;
+  min-height: calc(100vh - 80px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 32px 24px 60px;
   align-items: center;
-  background-color: #f5f5f5;
 }
 
 .login-form {
-  background: #fff;
-  padding: 40px;
-  width: 320px;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  background: var(--surface);
+  padding: 28px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 14px;
 }
 
 .login-form h2 {
-  text-align: center;
-  margin-bottom: 25px;
+  font-family: "Fraunces", serif;
+  margin-bottom: 6px;
 }
 
-.login-form input {
+.login-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.95rem;
+}
+
+.login-form input,
+.login-form select {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
 }
 
-.login-form button {
-  width: 100%;
-  padding: 10px;
-  background-color: #111;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
+.login-form .error {
+  color: #b72e2e;
+  font-size: 0.9rem;
 }
 
-.login-form button:hover {
-  background-color: #f04e30;
+.login-aside .card {
+  display: grid;
+  gap: 10px;
+}
+
+.login-aside .muted {
+  color: var(--muted);
 }

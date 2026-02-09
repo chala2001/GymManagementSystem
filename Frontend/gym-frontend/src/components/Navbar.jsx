@@ -4,17 +4,19 @@ import '../styles/Navbar.css';
 function Navbar() {
   return (
     <nav className="navbar">
-      <div className="navbar-logo">
-        Future Fitness
-      </div>
+      <Link to="/" className="navbar-logo">
+        ForgeFit
+      </Link>
 
       <ul className="navbar-links">
-        <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/contact">Contact</Link></li>
         <li><Link to="/login">Login</Link></li>
-        <li><Link to="/register">Register</Link></li>
       </ul>
+
+      <Link className="navbar-cta" to="/register">
+        Start Membership
+      </Link>
     </nav>
   );
 }
