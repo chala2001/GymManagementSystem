@@ -97,6 +97,10 @@ function UserDashboard() {
                 <strong>{user.username}</strong>
               </div>
               <div>
+                <span>Email</span>
+                <strong>{user.email}</strong>
+              </div>
+              <div>
                 <span>Date of birth</span>
                 <strong>{user.dateOfBirth}</strong>
               </div>

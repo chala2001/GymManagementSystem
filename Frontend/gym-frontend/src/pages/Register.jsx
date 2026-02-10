@@ -7,6 +7,7 @@ function Register() {
     username: '',
     password: '',
     name: '',
+    email: '',
     dateOfBirth: '',
   });
   const [result, setResult] = useState('');
@@ -31,6 +32,7 @@ function Register() {
         username: '',
         password: '',
         name: '',
+        email: '',
         dateOfBirth: '',
       });
     } catch (err) {
@@ -63,6 +65,15 @@ function Register() {
             name="username"
             placeholder="Username"
             value={formData.username}
+            onChange={handleChange}
+            required
+          />
+          <input
+            className="input"
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
             onChange={handleChange}
             required
           />

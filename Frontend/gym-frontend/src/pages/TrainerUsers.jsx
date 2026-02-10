@@ -56,6 +56,7 @@ function TrainerUsers() {
             <th>ID</th>
             <th>Name</th>
             <th>Username</th>
+            <th>Email</th>
             <th>Gym Routine</th>
             <th>Action</th>
           </tr>
@@ -66,6 +67,7 @@ function TrainerUsers() {
               <td>{u.id}</td>
               <td>{u.name}</td>
               <td>{u.username}</td>
+              <td>{u.email}</td>
 
               <td>
                 <textarea

@@ -1,0 +1,13 @@
+# Workspace-local IDE/editor folders
+.vscode/
+.idea/
+
+# Local agent/temp files
+tmpclaude-*
+
+# Local infrastructure runtime data
+kafka-data/
+
+# Common build artifacts across modules
+**/target/
+**/dist/

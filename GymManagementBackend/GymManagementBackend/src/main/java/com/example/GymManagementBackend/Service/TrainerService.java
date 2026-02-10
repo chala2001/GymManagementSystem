@@ -27,6 +27,7 @@ public class TrainerService {
                 .orElseThrow(() -> new RuntimeException("Trainer not found"));
 
         trainer.setName(updatedTrainer.getName());
+        trainer.setEmail(updatedTrainer.getEmail());
         trainer.setExperienceYears(updatedTrainer.getExperienceYears());
         trainer.setDateOfBirth(updatedTrainer.getDateOfBirth());
 
